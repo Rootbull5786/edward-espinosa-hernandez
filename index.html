@@ -1,46 +1,50 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+# HTML para index.html
+index_html = '''
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edward Espinosa Hernandez - Experto en Análisis y Diseño de Sistemas Informáticos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2em;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            margin-top: 2em;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+    <title>Edward Espinosa Hernandez</title>
 </head>
 <body>
-    <header>
-        <h1>Edward Espinosa Hernandez</h1>
-        <p>Experto en Análisis y Diseño de Sistemas Informáticos</p>
-    </header>
-    <div class="container">
-        <h2>Sobre mí</h2>
-        <p>Hola, soy Edward Espinosa Hernandez, un apasionado experto en el área de análisis y diseño de sistemas informáticos. Mi experiencia en el mundo digital me ha permitido abordar desafíos complejos y crear soluciones innovadoras.</p>
-        <h2>Contacto</h2>
-        <p>Puedes contactarme a través de WhatsApp o llamándome al número: 3228508557.</p>
-    </div>
+    <h1>Bienvenido a mi sitio web</h1>
+    <p>Soy experto en seguridad cibernética y gestión agroempresarial.</p>
+    <a href="/contacto">Contáctame</a>
 </body>
 </html>
+'''
+
+# HTML para contacto.html
+contacto_html = '''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacto</title>
+</head>
+<body>
+    <h1>Contáctame</h1>
+    <p>Puedes comunicarte conmigo a través de WhatsApp al número: 3228508557</p>
+</body>
+</html>
+'''
+
+# Guardar los HTML en archivos
+with open('templates/index.html', 'w') as f:
+    f.write(index_html)
+
+with open('templates/contacto.html', 'w') as f:
+    f.write(contacto_html)
